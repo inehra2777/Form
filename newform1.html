@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!--<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+  </head>
+  <div class="header">
+<div class="progress-container">
+
+
+  <div class="progress-bar" id="myBar"></div>
+</div>
+</div>
+  <body>
+
+
+
+
+    <!-- scroll bar -->
+
+
+
+
+
+    <nav  class="navbar navbar-expand-lg navbar-dark bg-dark"  style="padding-bottom:10px">
+<img src='LDC.png'height="60px" width="80px"  />
+  <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button> -->
+<!--
+  <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
+    <ul class="navbar-nav mr-auto">
+    <!-- <ul class="nav-menu"> -->
+      <li class="nav-item active">
+        <a  href="#" id="new1" class="nav-link" style="cursor:pointer;"><b><span style="padding-left:10px;">Registration Form</span></b></a>
+      </li>
+      <li class="nav-item active">
+        <a href="#" id="fetch_data1" class="nav-link" onclick="get_enroll()" style="cursor:pointer;"><b><span style="padding-left:10px;">Fetch Data</span></b></a>
+      </li>
+      <li class="nav-item">
+        <img href="#" id="img1" src="/home/vaibhav/Documents/newtest/newForm/darkmodeicon.png" style="cursor:pointer; padding-top: 10px; padding-left: 10px; width:25px; height:30px;" alt="" onclick="myToggle()">
+      <!-- <onclick="myFunction()">Toggle dark mode</button> -->
+    </li>
+    </ul>
+
+          <!-- <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div> -->
+
+      <form class="form-inline my-2 my-lg-0 " style=""  id="search_fetch" hidden>
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" id ='search_data' aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="button" onclick="get_details()">Search</button>
+    </form>
+
+
+
+
+</nav>
+
+
+
+
+<!-- Registration form
+<div class='fetch' id='fetch' hidden>
+  <form method='POST' onsubmit="get_details()">
+    <label for ='e_id'> Enter the Enrollment number</label>
+    <input type='text' id='e_id' name='e_id' required class='form-control'>
+    <input type='submit' value='submit'/>
+  </form>
+</div>-->
+<!-- <img src='LDC.png' style="width:40%;height:100%;" id='logo_sc' hidden> -->
+<div style="padding-top: 10px;"class="container" id='container' hidden>
+
+	<div class="well" id="well">
+
+    <h4 style=";"><b>Student Details</b></h4>
+    <hr >
+	<div class="row">
+				<form name='std_form' id='std_form' class="needs-validation" method='POST'>
+					<div class="col-sm-12">
+						<div class="row">
+							<div class="col-sm-6 form-group">
+
+								<label>First Name<span style="color:red;">*</span></label>
+								<input type="text" placeholder="Enter First Name Here.." name='fname' id='fname' class="form-control" required>
+							</div>
+
+
+              <div class="col-sm-6 form-group">
+								<label>Middle Name</label>
+								<input type="text" placeholder="Enter Middle Name Here.."  name='mname' id='mname' class="form-control">
+							</div>
+
+							<div class="col-sm-6 form-group">
+								<label>Last Name <span style="color:red;">*</span></label>
+								<input type="text" placeholder="Enter Last Name Here.." class="form-control" name='lname' id='lname' required>
+							</div>
+						</div>
+
+            </div>
+
+            <div class="col-sm-12">
+              <div class="row">
+  							<div class="col-sm-6 form-group">
+                  <label for="gender">Gender<span style="color:red; ">*</span> : </label>
+                  <label for="male">Male</label>
+                    <input id="gender" type="radio" name="gender" value="male">
+                    <label for="female">Female</label>
+                    <input id="gender" type="radio" name="gender" value="female">
+                    <label for="other">Other</label>
+                    <input id="gender" type="radio" name="gender" value="other">
+                    </div>
+
+
+                    <div class="col-sm-6 form-group input-group date">
+                      <label for="age">DOB <span style="color:red;">*</span> <span style="padding-right:6px;">:</span></label>
+                      <input id="age"  name='age' type="date" value=""  oninput="this.nextElementSibling.value = this.value">
+
+
+                      </div>
+                    </div>
+                    </div>
+                    </div>
+                  </div>
+
+
+
+
+                    <!-- Address-->
+
+                    <div class="well" id="well3">
+
+                      <h4 style=";"><b>Address Details</b></h4>
+                      <hr >
+
+
+                  <div class="col-sm-12">
+                  <div class="form-group">
+
+							<label> Current Address<span style="color:red;">*</span>:</label>
+							<textarea id="current" placeholder="Enter Address Here.." rows="3" class="form-control" name='address' required></textarea>
+						</div>
+            </div>
+
+
+
+
+
+            <div class="col-sm-12">
+
+						<div class="row">
+							<div class="col-sm-4 form-group">
+								<label>City<span style="color:red;">*</span></label>
+								<input type="text" placeholder="Enter City Name Here.." class="form-control" name='city' id='city' required>
+							</div>
+							<div class="col-sm-4 form-group">
+								<label>State<span style="color:red;">*</span></label>
+
+
+
+      <select name="state" id="state" class="form-control">
+      <option value="Andhra Pradesh">Andhra Pradesh</option>
+      <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+      <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+      <option value="Assam">Assam</option>
+      <option value="Bihar">Bihar</option>
+      <option value="Chandigarh">Chandigarh</option>
+      <option value="Chhattisgarh">Chhattisgarh</option>
+      <option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+      <option value="Daman and Diu">Daman and Diu</option>
+      <option value="Delhi">Delhi</option>
+      <option value="Lakshadweep">Lakshadweep</option>
+      <option value="Puducherry">Puducherry</option>
+      <option value="Goa">Goa</option>
+      <option value="Gujarat">Gujarat</option>
+      <option value="Haryana">Haryana</option>
+      <option value="Himachal Pradesh">Himachal Pradesh</option>
+      <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+      <option value="Jharkhand">Jharkhand</option>
+      <option value="Karnataka">Karnataka</option>
+      <option value="Kerala">Kerala</option>
+      <option value="Madhya Pradesh">Madhya Pradesh</option>
+      <option value="Maharashtra">Maharashtra</option>
+      <option value="Manipur">Manipur</option>
+      <option value="Meghalaya">Meghalaya</option>
+      <option value="Mizoram">Mizoram</option>
+      <option value="Nagaland">Nagaland</option>
+      <option value="Odisha">Odisha</option>
+      <option value="Punjab">Punjab</option>
+      <option value="Rajasthan">Rajasthan</option>
+      <option value="Sikkim">Sikkim</option>
+      <option value="Tamil Nadu">Tamil Nadu</option>
+      <option value="Telangana">Telangana</option>
+      <option value="Tripura">Tripura</option>
+      <option value="Uttar Pradesh">Uttar Pradesh</option>
+      <option value="Uttarakhand">Uttarakhand</option>
+      <option value="West Bengal">West Bengal</option>
+      </select>
+
+
+
+              </div>
+							<div class="col-sm-4 form-group">
+								<label>Pin<span style="color:red;">*</span></label>
+								<input type="number" pattern="^[1-9]{1}[0-9]{2}\s{0,1}[0-9]{3}$" placeholder="Enter Pin Code Here.." class="form-control" name='pin' id='pin' required>
+							</div>
+						</div>
+          </div>
+
+
+
+
+          <!-- checkbox to autofill current and permamant address-->
+          <div class="row">
+
+
+        <div  style="padding-top: 5px; padding-bottom: 5px;" class="col-sm-12">
+          <div class="col-sm-12">
+
+            <label >Is the current address same as permamant address?<span style="color:red;">*</span> : </label>
+            <label for="Yes">Yes</label>
+            <input id="Yes" type="radio" name="bool" value="Yes" onchange="addressFunction()">
+            <label for="No">No</label>
+            <input id="No" type="radio" name="bool" value="No">
+
+          </div>
+        </div>
+
+          </div>
+
+
+         <!-- Parmanent Address-->
+         <div class="col-sm-12">
+          <div class="form-group">
+
+
+          <label>Permanent Address : </label>
+          <textarea id="permanent" placeholder="Enter Address Here.." rows="3" class="form-control" name='par_address'></textarea>
+
+        </div>
+        </div>
+
+<!-- permnanet city state details-->
+        <div class="col-sm-12">
+
+        <div class="row">
+          <div class="col-sm-4 form-group">
+            <label>City</label>
+            <input type="text" placeholder="Enter City Name Here.." class="form-control" name='city' id='city1' required>
+          </div>
+          <div class="col-sm-4 form-group">
+            <label for='states'>State</label>
+
+<select name="state" id="state1" class="form-control">
+<option value="Andhra Pradesh">Andhra Pradesh</option>
+<option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+<option value="Arunachal Pradesh">Arunachal Pradesh</option>
+<option value="Assam">Assam</option>
+<option value="Bihar">Bihar</option>
+<option value="Chandigarh">Chandigarh</option>
+<option value="Chhattisgarh">Chhattisgarh</option>
+<option value="Dadar and Nagar Haveli">Dadar and Nagar Haveli</option>
+<option value="Daman and Diu">Daman and Diu</option>
+<option value="Delhi">Delhi</option>
+<option value="Lakshadweep">Lakshadweep</option>
+<option value="Puducherry">Puducherry</option>
+<option value="Goa">Goa</option>
+<option value="Gujarat">Gujarat</option>
+<option value="Haryana">Haryana</option>
+<option value="Himachal Pradesh">Himachal Pradesh</option>
+<option value="Jammu and Kashmir">Jammu and Kashmir</option>
+<option value="Jharkhand">Jharkhand</option>
+<option value="Karnataka">Karnataka</option>
+<option value="Kerala">Kerala</option>
+<option value="Madhya Pradesh">Madhya Pradesh</option>
+<option value="Maharashtra">Maharashtra</option>
+<option value="Manipur">Manipur</option>
+<option value="Meghalaya">Meghalaya</option>
+<option value="Mizoram">Mizoram</option>
+<option value="Nagaland">Nagaland</option>
+<option value="Odisha">Odisha</option>
+<option value="Punjab">Punjab</option>
+<option value="Rajasthan">Rajasthan</option>
+<option value="Sikkim">Sikkim</option>
+<option value="Tamil Nadu">Tamil Nadu</option>
+<option value="Telangana">Telangana</option>
+<option value="Tripura">Tripura</option>
+<option value="Uttar Pradesh">Uttar Pradesh</option>
+<option value="Uttarakhand">Uttarakhand</option>
+<option value="West Bengal">West Bengal</option>
+</select>
+        </div>
+          <div class="col-sm-4 form-group">
+            <label>Pin</label>
+            <input pattern="^[1-9]{1}[0-9]{2}\s{0,1}[0-9]{3}$" type="number" placeholder="Enter Pin Code Here.." class="form-control" name='pin1' id='pin1' required>
+          </div>
+        </div>
+      </div>
+
+
+
+
+              </div>
+
+  <!--parent Guardians-->
+
+
+<div class="well" id="well2">
+  <h4 style=""><b>Parent Details</b></h4>
+  <hr >
+<div class="row">
+
+    <div class="col-sm-6 form-group" >
+      <label for="guardians">Parent/Guardians<span style="color:red;">*</span></label>
+      <input type="text" placeholder="Enter Guardians Name Here.." class="form-control" name='parent' id='parent' required>
+    </div>
+  </div>
+
+
+<div class='row'>
+
+<div class="col-sm-6 form-group">
+  <label>Phone Number<span style="color:red;">*</span></label>
+  <input type="tel" pattern="^\d{3}-\d{3}-\d{4}$" placeholder="Enter Phone Number Here.." class="form-control" name='phone' id='phone'>
+</div>
+<div class="col-sm-6 form-group">
+  <label>Email Address</label>
+  <input type="text" placeholder="Enter Email Address Here.." class="form-control" name='email' id='email'>
+</div>
+</div>
+
+  </div>
+
+
+
+
+  <!-- Educational Details -->
+
+  <div class="well" id="well4">
+<h4 style=""><b>Past Educational Details</b></h4>
+<hr >
+    <div class="row">
+      <div class="col-sm-5 form-group">
+
+      <label for="srd" placeholder="Enter previous year std ">Standard : </label>
+      <select class="form-control" id="std" name="std" >
+        <option selected disabled hidden value="">Choose the standard</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+      </select>
+
+    </div>
+    </div>
+
+
+
+
+    <!-- subjects-->
+    <!-- <div class="col-sm-12">
+      <div class="row">
+        <div class="col-sm-6 form-group">
+          <label for="Subjects">Subjects<span style="color:red;">*</span> : </label>
+              <select name="Subjects" id="subjects" required>
+               <option value="Mathematics">Mathematics</option>
+               <option value="Sceince">Science</option>
+               <option value="Marathi">Marathi</option>
+               <option value="English">English</option>
+               <option value="Social Studies">Social Studies</option>
+              </select>
+        </div>
+
+
+        <div class="col-sm-6 form-group">
+          <label for="electives">Electives<span style="color:red;">*</span> : </label>
+              <select name="electives" id="electives" required>
+               <option value="Computer">Computer</option>
+               <option value="TD">TD</option>
+               <option value="Sports">Sports</option>
+               <option value="Economics">Economics</option>
+              </select>
+        </div>
+
+        </div>
+      </div> -->
+
+  <div class="row">
+<!-- math -->
+    <div class="col-sm-3 form-group" >
+    <label for="math">Mathematics :</label>
+
+      <input type="number" placeholder="Enter marks" class="form-control" name='math' id='math'>
+    </div>
+<!-- science -->
+    <div class="col-sm-3 form-group" >
+    <label  for="std">Science :</label>
+
+      <input type="number" placeholder="Enter marks" class="form-control" name='science' id='science'>
+    </div>
+
+<!-- Social Studies -->
+    <div class="col-sm-3 form-group" >
+    <label for="ss">Social Studies :</label>
+
+      <input type="number" placeholder="Enter marks" class="form-control" name='ss' id='ss'>
+    </div>
+
+<!-- English -->
+    <div class="col-sm-12 form-group" >
+      <div class="row">
+
+      <div id="users">
+   <div class="user">
+       <div class="col-sm-12 form-group" >
+     <input name="subject1" id=randomNumber() type="text" placeholder="subject">
+     <b>:</b>
+     <input name="marks1" type="number" id="marks1" placeholder="marks">
+   </div>
+   </div>
+
+ </div>
+ </div>
+     <button type="button" id='add-user' onclick="fields()">Add more fields</button><br><br>
+
+  </div>
+
+  <!-- <div class='row'>
+
+  <div class="col-sm-6 form-group">
+  <label>Phone Number<span style="color:red;">*</span></label>
+  <input type="tel" pattern="^\d{3}-\d{3}-\d{4}$" placeholder="Enter Phone Number Here.." class="form-control" name='phone' id='phone'>
+  </div>
+  <div class="col-sm-6 form-group">
+  <label>Email Address</label>
+  <input type="text" placeholder="Enter Email Address Here.." class="form-control" name='email' id='email'>
+  </div>
+  </div> -->
+
+  </div>
+
+
+
+
+<!-- Educational details ends -->
+  					<!-- <input type="submit" class="btn btn-lg btn-info" value='submit' /> -->
+
+            <div class="center">
+              <button class="btn" type='submit'>
+                <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+                  <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+                  <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+                </svg>
+                <span>Submit</span>
+              </button>
+            </div>
+	</form>
+</div>
+
+  </body>
+
+
+
+
+
+  <script>
+
+  // function myFunction() {
+  //    var element = document.body;
+  //    element.classList.toggle("dark-mode");
+  // }
+
+  function myToggle() {
+     var element = document.body;
+     var element1 = document.getElementById("well");
+
+     var element2 = document.getElementById("well2");
+
+     var element3 = document.getElementById("well3");
+     var element4 = document.getElementById("well4");
+
+     element.classList.toggle("dark-mode");
+     element1.classList.toggle("dark-well");
+     element2.classList.toggle("dark-well");
+     element3.classList.toggle("dark-well");
+     element4.classList.toggle("dark-well");
+  }
+
+
+
+  window.onscroll = function() {myFunction()};
+
+  function myFunction() {
+    var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var scrolled = (winScroll / height) * 100;
+    document.getElementById("myBar").style.width = scrolled + "%";
+}
+
+  document.getElementById("new1").onclick = function() {getform()};
+
+
+    function getform()
+{
+    document.getElementById('container').hidden=false;
+
+    document.getElementById('search_fetch').hidden=true;
+    // document.getElementById('logo_sc').hidden=true;
+}
+
+function get_enroll()
+{
+  document.getElementById('container').hidden=true;
+
+  document.getElementById('search_fetch').hidden=false;
+  // document.getElementById('logo_sc').hidden=false;
+}
+
+// hamburger function mobile views
+
+
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+
+hamburger.addEventListener("click", mobileMenu);
+
+function mobileMenu() {
+    hamburger.classList.toggle("active");
+    navMenu.classList.toggle("active");
+}
+
+
+const navLink = document.querySelectorAll(".nav-link");
+
+navLink.forEach(n => n.addEventListener("click", closeMenu));
+
+function closeMenu() {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+}
+
+// ends hamrber
+function fields() {
+   var button=document.getElementById("add-user");
+
+    var cln = document.getElementsByClassName("user")[0].cloneNode(true);
+    console.log(document.getElementById("users"));
+      document.getElementById("users").insertBefore(cln,document.getElementById("users").childNodes[0]);
+      return false;
+
+};
+
+
+function randomNumber(){
+
+  console.log("Hello");
+  return Math.random().toString();
+}
+
+
+
+
+  </script>
+
+  <script src='script.js'></script>
+</html>
